@@ -71,6 +71,21 @@ int binary_tree_is_full(const binary_tree_t *tree)
 }
 
 /**
+ * count_nodes - counts the nodes in a tree
+ *
+ * @tree: The tree to count nodes in
+ *
+ * Return: the number of nodes in the tree
+ */
+int count_nodes(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+
+	return (1 + count_nodes(tree->left) + count_nodes(tree->right));
+}
+
+/**
  * binary_tree_is_perfect - checks if a binary tree is perfect
  *
  * @tree: the root node of the tree to check
@@ -85,5 +100,9 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (!tree->left && !tree->right)
 		return (1);
 
-	return (!binary_tree_balance(tree) && binary_tree_is_full(tree) && (binary_tree_height(tree->left) == binary_tree_height(tree->right)));
+	return (!binary_tree_balance(tree)
+			&& binary_tree_is_full(tree)
+			&& (binary_tree_height(tree->left) == binary_tree_height(tree->right))
+			&& (count_nodes(tree->left) == count_nodes(tree->right))
+			);
 }
