@@ -5,7 +5,7 @@
  * @node: node to return its level in the tree
  * Return: level of the node
  */
-int level(binary_tree_t *node)
+int level(const binary_tree_t *node)
 {
 	int lv = 0;
 
