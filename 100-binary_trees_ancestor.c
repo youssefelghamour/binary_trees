@@ -12,6 +12,8 @@ binary_tree_t *LCA(binary_tree_t *root,
 {
 	binary_tree_t *l_lca, *r_lca;
 
+	if (root == NULL)
+		return (NULL);
 	if (root == node1 || root == node2)
 		return (root);
 	l_lca = LCA(root->left, node1, node2);
