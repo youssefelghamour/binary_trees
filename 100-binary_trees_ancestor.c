@@ -37,8 +37,6 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 {
 	binary_tree_t *root = (binary_tree_t *)first, *lca;
 
-	if (first == NULL || second == NULL)
-		return (NULL);
 	while (root->parent != NULL)
 		root = root->parent;
 	lca = LCA(root, (binary_tree_t *)first, (binary_tree_t *)second);
