@@ -6,7 +6,7 @@
  *
  * @tree: the root node of the tree to check
  * @min: The minimum allowed value for nodes in the subtree
- * @max: The minimum allowed value for nodes in the subtree
+ * @max: The maximum allowed value for nodes in the subtree
  *
  * Return: 1 if tree is a valid BST, and 0 otherwise
  */
@@ -15,10 +15,11 @@ int bst(const binary_tree_t *tree, int min, int max)
 	if (!tree)
 		return (1);
 
-	if ((tree->n <= min) || (tree->n >= max))
+	if ((tree->n < min) || (tree->n > max))
 		return (0);
 
-	return (bst(tree->left, min, tree->n) && bst(tree->right, tree->n, max));
+	return (bst(tree->left, min, tree->n - 1) &&
+			bst(tree->right, tree->n + 1, max));
 }
 
 /**
