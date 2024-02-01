@@ -4,13 +4,16 @@
  * binary_tree_rotate_right - performs a right-rotation on a binary tree
  *
  * @tree: the root node of the tree to rotate
- *                    (p)
- *                     .
- *                     .
- *           .-------(tree)------.
- *           .                   .
- *      .---(b)---.              .
- *(b->left)     (b->right)
+ *
+ *                     (p)
+ *                      .
+ *                      .
+ *            .-------(tree)------.
+ *            .                   .
+ *       .---(b)---.              .
+ * (b->left)     (b->right)
+ *
+ *
  *
  *                      (p)
  *                       .
@@ -19,6 +22,8 @@
  *             .                       .
  *         (b->left)            .---(tree)---.
  *                          (b->right)       .
+ *
+ *
  * Return: the new root node of the tree once rotated
  */
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree)
