@@ -1,5 +1,14 @@
 #include "binary_trees.h"
 
+bst_t *two_childs(bst_t *node)
+{
+	bst_t *temp = node;
+
+	while (temp && temp->left != NULL)
+		temp = temp->left;
+	return (temp);
+}
+
 bst_t *bst_remove(bst_t *root, int value)
 {
 	bst_t *temp, *succ_p, *succ;
@@ -16,33 +25,23 @@ bst_t *bst_remove(bst_t *root, int value)
 		root->left = bst_remove(root->left, value);
 		return (root);
 	}
-	if (root->left == NULL)
-	{
-		temp = root->right;
-		free(root);
-		return (temp);
-	}
-	else if (root->right == NULL)
-	{
-		temp = root->left;
-		free(root);
-		return (temp);
-	}
 	else
 	{
-		succ_p = root;
-		succ = root->right;
-		while (succ->left != NULL)
+		if (root->left == NULL)
 		{
-			succ_p = succ;
-			succ = succ->left;
+			temp = root->right;
+			free(root);
+			return (temp);
 		}
-		if (succ_p != root)
-			succ_p->left = succ->right;
-		else
-			succ_p->right = succ->right;
-		root->n = succ->n;
-		free(succ);
-		return (root);
+		else if (root->right == NULL)
+		{
+			temp = root->right;
+			free(root);
+			return (temp);
+		}
+		temp = two_childs(root->right);
+		root->n = temp->n;
+		root->right = bst_remove(root->right, temp->n);
 	}
+	return (root);
 }
