@@ -13,7 +13,7 @@ avl_t *array_to_avl(int *array, size_t size)
 
 	for (i = 0; i < size; i++)
 	{
-		avl_insert(&tree, array[i])
+		avl_insert(&tree, array[i]);
 	}
 	return (tree);
 }
