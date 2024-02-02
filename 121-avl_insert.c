@@ -48,7 +48,7 @@ avl_t *avl_ins(avl_t **tree, avl_t *p, avl_t **temp, int n)
 	else if (balance < -1 && (*tree)->right->n < n)
 	{
 		*tree = binary_tree_rotate_left(*tree);
-	}	
+	}
 	return (*tree);
 }
 
